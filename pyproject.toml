@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sre-incident-analytics-dash"
+version = "1.0.0"
+description = "SRE & Tier-3 Sustainment Incident Intelligence Engine — Pareto RCA, SLA/Error-Budget Telemetry, MAD Anomaly Detection, Interactive Plotly Dash & Executive Storytelling Reports (100% Synthetic Telemetry)"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+authors = [
+  { name = "Elvis Freitas Lopes Herllain", email = "4459357+evslopes@users.noreply.github.com" }
+]
+dependencies = [
+  "pandas>=2.2",
+  "numpy>=2.0",
+  "plotly>=5.24",
+  "dash>=2.18",
+  "dash-bootstrap-components>=1.6",
+  "gunicorn>=22.0; platform_system != 'Windows'",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0",
+]
+
+[project.scripts]
+sre-analytics = "sre_analytics.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+addopts = "-q"
